@@ -13,4 +13,4 @@ components:
   - alias: codewind-theia
     type: chePlugin
     #  Use the custom theia we've created
-    id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/codewind-theia/meta.yaml
+    id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/vscode-plugin/meta.yaml
