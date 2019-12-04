@@ -60,6 +60,7 @@ spec:
     * You might need to do a `git commit` & `push` at this stage to be able to access your URL.
 ```yaml
 # The yaml should look something like:
+# Note: if using a custom 'devfile.yaml' just ensure that the codewind-theia's id field points to your 'meta.yaml'
 apiVersion: 1.0.0
 metadata:
   name: codewind-custom-che
@@ -67,7 +68,7 @@ components:
   ...
   - alias: codewind-theia
     type: chePlugin
-    id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/codewind-theia/meta.yaml
+    id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/vscode-plugin/meta.yaml
 ```
 
 5. If you've followed the steps correctly your `clone` of this repository should be setup with:
@@ -75,5 +76,23 @@ components:
 * A custom `meta.yaml` file which points to your `.vsix` file.
 * A custom `devfile.yaml` file which points to your `meta.yaml` file.
 
+### Running 
+
+Now we are ready to get Che up and running.
+
+*Note*: the following repository and docs are currently on github.ibm.com, create an issue if you cannot access it.
+
+* Follow the steps at: https://github.ibm.com/James-Wallis1/docs/blob/master/codewind/che-local-docker.md **until** you reach the `devfile.yaml` deployment as we want to use our custom file.
+* The step is something like:
+```bash
+echo "http://che-che.${CHE_DOMAIN}.nip.io/f?url=https://raw.githubusercontent.com/eclipse/codewind-che-plugin/master/devfiles/${DEVFILE_VERSION}/devfile.yaml"
+```
+* Instead, get the **raw** github.com url to your `devfile.yaml` and use the command:
+```bash
+# For ease add your devfile url to the variable DEVFILE_URL in your terminal
+# otherwise just edit it in when you paste it into your terminal
+# $CHE_DOMAIN is set in the che-local-docker.md docs
+echo "http://che-che.${CHE_DOMAIN}.nip.io/f?url=${DEVFILE_URL}"
+```
 
 

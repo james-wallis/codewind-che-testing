@@ -1,16 +1,38 @@
 ---
+# apiVersion: 1.0.0
+# metadata:
+#   name: codewind-custom-che
+# components:
+#   - alias: theia-ide
+#     type: cheEditor
+#     id: eclipse/che-theia/7.3.1
+#   - alias: codewind-sidecar
+#     type: chePlugin
+#     # Use the normal codewind sidecar, this is set to latest
+#     id: https://raw.githubusercontent.com/eclipse/codewind-che-plugin/master/plugins/codewind/codewind-sidecar/latest/meta.yaml
+#   - alias: codewind-theia
+#     type: chePlugin
+#     #  Use the custom theia we've created
+#     id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/vscode-plugin/meta.yaml
+
 apiVersion: 1.0.0
 metadata:
-  name: codewind-custom-che
+  name: codewind-che
 components:
   - alias: theia-ide
     type: cheEditor
-    id: eclipse/che-theia/7.3.1
+    id: eclipse/che-theia/latest
+    memoryLimit: 1024Mi
   - alias: codewind-sidecar
     type: chePlugin
-    # Use the normal codewind sidecar, this is set to latest
     id: https://raw.githubusercontent.com/eclipse/codewind-che-plugin/master/plugins/codewind/codewind-sidecar/latest/meta.yaml
   - alias: codewind-theia
     type: chePlugin
-    #  Use the custom theia we've created
     id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/vscode-plugin/meta.yaml
+  - alias: node-plugin
+    type: chePlugin
+    id: che-incubator/typescript/latest
+  - alias: java-plugin
+    type: chePlugin
+    id: redhat/java11/latest
+
