@@ -41,5 +41,39 @@ git restore package.json
 mv /codewind-vscode/dev/codewind-0.7.0.vsix /codewind-che-testing/vscode-plugin/codewind-theia.vsix
 ```
 
+3. Change the `vscode-plugin/meta.yaml` file to match your `.vsix` file.
+    * Change the `spec.extensions` value to match the github.com **download** URL of the `.vsix` file.
+    * You might need to do a `git commit` & `push` at this stage to be able to access your URL.
+```yaml
+# The yaml should look something like:
+apiVersion: v2
+publisher: eclipse
+name: codewind-plugin
+...
+spec:
+  extensions:
+    - https://github.com/james-wallis/codewind-che-testing/raw/master/vscode-plugin/codewind-theia.vsix
+```
+
+4. Update the `devfile.yaml` to point to your custom `vscode-plugin/meta.yaml`.
+    * Change the `codewind-theia.id` to point to match the github.com **raw** `meta.yaml` file.
+    * You might need to do a `git commit` & `push` at this stage to be able to access your URL.
+```yaml
+# The yaml should look something like:
+apiVersion: 1.0.0
+metadata:
+  name: codewind-custom-che
+components:
+  ...
+  - alias: codewind-theia
+    type: chePlugin
+    id: https://raw.githubusercontent.com/james-wallis/codewind-che-testing/master/codewind-theia/meta.yaml
+```
+
+5. If you've followed the steps correctly your `clone` of this repository should be setup with:
+* Your custom `.vsix` file.
+* A custom `meta.yaml` file which points to your `.vsix` file.
+* A custom `devfile.yaml` file which points to your `meta.yaml` file.
+
 
 
