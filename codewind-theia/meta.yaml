@@ -1,0 +1,16 @@
+apiVersion: v2
+publisher: eclipse
+name: codewind-plugin
+version: 0.5.0
+type: VS Code extension
+displayName: Codewind VS Code Extension
+title: Codewind Extension for VS Code
+description: Codewind Extension for Theia
+icon: https://raw.githubusercontent.com/eclipse/codewind-vscode/master/dev/res/img/codewind.png
+repository: http://github.com/eclipse/codewind-vscode/
+category: Other
+firstPublicationDate: "2019-05-30"
+latestUpdateDate: "2019-10-10"
+spec:
+  extensions:
+    - https://raw.githubusercontent.com/markcor11/che-hybrid/master/codewind-vscode/codewind-theia.vsix
